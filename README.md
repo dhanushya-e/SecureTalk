@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SecureTalk – Cryptographic Chat Application
 
 1. Project Overview
@@ -103,3 +104,6 @@ ESWARAVAKA DHANUSHYA
 B.Tech – Cyber Security
 
 Project: SecureTalk – Cryptographic Chat Application
+=======
+# SecureTalk
+>>>>>>> 1feb79d1cd81ebd93868bbdac08af15255641f6f
