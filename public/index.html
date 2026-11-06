@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SecureTalk - Educational encrypted chat application">
+    <title>SecureTalk | Private Messaging</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app-container">
+
+        <header class="top-bar">
+            <div class="brand">
+                <div class="brand-icon">S</div>
+                <div>
+                    <h1>SecureTalk</h1>
+                    <p>PRIVATE MESSAGING</p>
+                </div>
+            </div>
+
+            <div class="security-status">
+                <span class="status-dot"></span>
+                <span id="securityStatus">Not connected</span>
+            </div>
+        </header>
+
+        <section class="chat-layout">
+
+            <aside class="sidebar">
+                <div class="sidebar-heading">
+                    <h2>Workspace</h2>
+                    <span class="online-label">● Secure demo</span>
+                </div>
+
+                <div class="room-card">
+                    <span class="card-label">CHAT ROOM</span>
+                    <h3>Private Room</h3>
+                    <p>Connect with one other participant.</p>
+                </div>
+
+                <div class="connection-card">
+                    <h3>Connection</h3>
+                    <p id="connectionStatus">Waiting to connect</p>
+                    <div class="connection-line">
+                        <span class="status-dot"></span>
+                        <span id="peerStatus">No peer connected</span>
+                    </div>
+                </div>
+
+                <div class="encryption-card">
+                    <h3>Encryption</h3>
+                    <div class="encryption-item">
+                        <span>Key exchange</span>
+                        <strong>ECDH P-256</strong>
+                    </div>
+                    <div class="encryption-item">
+                        <span>Key derivation</span>
+                        <strong>HKDF SHA-256</strong>
+                    </div>
+                    <div class="fingerprint-card" id="fingerprintCard" hidden>
+    <h3>Peer Identity Verification</h3>
+
+    <p>Compare this fingerprint with the other participant.</p>
+
+    <div class="fingerprint-value" id="peerFingerprint">
+        Waiting for peer...
+    </div>
+    <p>Your Fingerprint</p>
+
+<div class="fingerprint-value" id="myFingerprint">
+    Generating...
+</div>
+
+    <p id="verificationStatus">
+        Verification pending
+    </p>
+
+    <button id="verifyFingerprintButton" type="button" disabled>
+        I Verified This Fingerprint
+    </button>
+</div>
+                    <div class="encryption-item">
+                        <span>Message cipher</span>
+                        <strong>AES-256-GCM</strong>
+                    </div>
+                </div>
+
+                <p class="sidebar-note">
+                    Educational prototype. Verify peer identity separately.
+                </p>
+            </aside>
+
+            <section class="chat-panel">
+
+                <div class="chat-header">
+                    <div>
+                        <h2>Private Conversation</h2>
+                        <p id="chatSubtitle">Join a room to begin</p>
+                    </div>
+                    <span class="encrypted-label">ENCRYPTED DEMO</span>
+                </div>
+
+                <div class="join-section" id="joinSection">
+                    <div class="join-icon">✦</div>
+                    <h2>Start a private conversation</h2>
+                    <p>Enter the same room ID as the other participant.</p>
+
+                    <label for="roomInput">Room ID</label>
+                    <input
+                        type="text"
+                        id="roomInput"
+                        placeholder="Example: secure-room-01"
+                        maxlength="40"
+                        autocomplete="off"
+                    >
+
+                    <button id="joinButton" type="button">
+                        Join Secure Room
+                    </button>
+
+                    <p id="joinError" class="error-message" role="alert"></p>
+                </div>
+
+                <div class="messages-area" id="messagesArea" hidden>
+                    <div class="welcome-message">
+                        <span>✦</span>
+                        <p>You're connected to the chat. Messages will appear here.</p>
+                    </div>
+                </div>
+
+                <form class="message-form" id="messageForm" hidden>
+                    <input
+                        type="text"
+                        id="messageInput"
+                        placeholder="Connect to a peer before sending..."
+                        autocomplete="off"
+                        maxlength="2000"
+                        disabled
+                    >
+                    <button type="submit" id="sendButton" disabled>
+                        Send
+                    </button>
+                </form>
+
+                <div class="chat-footer">
+                    <span>🔒 Educational encryption demonstration</span>
+                    <span>SecureTalk v1.0</span>
+                </div>
+
+            </section>
+        </section>
+
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
